@@ -20,7 +20,6 @@ import okhttp3.Response
 import org.json.JSONObject
 import java.io.IOException
 
-
 class TalkFragment : Fragment() {
 
     private lateinit var binding : FragmentTalkBinding
