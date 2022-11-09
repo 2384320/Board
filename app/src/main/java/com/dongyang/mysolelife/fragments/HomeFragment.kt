@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.bookmarkTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_bookmarkFragment)
+            it.findNavController().navigate(R.id.action_homeFragment_to_boardDailyFragment)
         }
 
         binding.storeTap.setOnClickListener {

@@ -50,7 +50,7 @@ class TalkFragment : Fragment() {
         }
 
         binding.bookmarkTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_talkFragment_to_bookmarkFragment)
+            it.findNavController().navigate(R.id.action_talkFragment_to_boardDailyFragment)
         }
 
         binding.storeTap.setOnClickListener {

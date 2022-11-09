@@ -1,7 +1,6 @@
 package com.dongyang.mysolelife.fragments
 
 import android.content.Intent
-import android.util.Log
 import android.os.AsyncTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,7 +13,7 @@ import com.dongyang.mysolelife.R
 import com.dongyang.mysolelife.boardDaily.BoardDailyAdapter
 import com.dongyang.mysolelife.boardDaily.BoardDailyModel
 import com.dongyang.mysolelife.boardDaily.BoardDailyWriteActivity
-import com.dongyang.mysolelife.databinding.FragmentBookmarkBinding
+import com.dongyang.mysolelife.databinding.FragmentBoarddailyBinding
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -22,11 +21,11 @@ import org.json.JSONObject
 import java.io.IOException
 
 
-class BookmarkFragment : Fragment() {
+class BoardDailyFragment : Fragment() {
 
-    private lateinit var binding : FragmentBookmarkBinding
+    private lateinit var binding : FragmentBoarddailyBinding
 
-    private val TAG = BookmarkFragment::class.java.simpleName
+    private val TAG = BoardDailyFragment::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,26 +37,26 @@ class BookmarkFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_bookmark, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_boarddaily, container, false)
 
         binding.writeBtn.setOnClickListener {
             val intent = Intent(context, BoardDailyWriteActivity::class.java)
             startActivity(intent)
         }
         binding.homeTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_bookmarkFragment_to_homeFragment)
+            it.findNavController().navigate(R.id.action_boardDailyFragment_to_homeFragment)
         }
 
         binding.tipTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_bookmarkFragment_to_tipFragment)
+            it.findNavController().navigate(R.id.action_boardDailyFragment_to_tipFragment)
         }
 
         binding.storeTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_bookmarkFragment_to_storeFragment)
+            it.findNavController().navigate(R.id.action_boardDailyFragment_to_storeFragment)
         }
 
         binding.talkTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_bookmarkFragment_to_talkFragment)
+            it.findNavController().navigate(R.id.action_boardDailyFragment_to_talkFragment)
         }
 
         val task: GetData = GetData()

@@ -17,38 +17,17 @@
             android:id="@+id/action_homeFragment_to_tipFragment"
             app:destination="@id/tipFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_bookmarkFragment"
-            app:destination="@id/bookmarkFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_storeFragment"
             app:destination="@id/storeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/bookmarkFragment"
-        android:name="com.dongyang.mysolelife.fragments.BookmarkFragment"
-        android:label="fragment_bookmark"
-        tools:layout="@layout/fragment_bookmark" >
         <action
-            android:id="@+id/action_bookmarkFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_bookmarkFragment_to_talkFragment"
-            app:destination="@id/talkFragment" />
-        <action
-            android:id="@+id/action_bookmarkFragment_to_tipFragment"
-            app:destination="@id/tipFragment" />
-        <action
-            android:id="@+id/action_bookmarkFragment_to_storeFragment"
-            app:destination="@id/storeFragment" />
+            android:id="@+id/action_homeFragment_to_boardDailyFragment"
+            app:destination="@id/boardDailyFragment" />
     </fragment>
     <fragment
         android:id="@+id/storeFragment"
         android:name="com.dongyang.mysolelife.fragments.StoreFragment"
         android:label="fragment_store"
         tools:layout="@layout/fragment_store" >
-        <action
-            android:id="@+id/action_storeFragment_to_bookmarkFragment"
-            app:destination="@id/bookmarkFragment" />
         <action
             android:id="@+id/action_storeFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
@@ -58,6 +37,9 @@
         <action
             android:id="@+id/action_storeFragment_to_talkFragment"
             app:destination="@id/talkFragment" />
+        <action
+            android:id="@+id/action_storeFragment_to_boardDailyFragment"
+            app:destination="@id/boardDailyFragment" />
     </fragment>
     <fragment
         android:id="@+id/talkFragment"
@@ -68,14 +50,14 @@
             android:id="@+id/action_talkFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_talkFragment_to_bookmarkFragment"
-            app:destination="@id/bookmarkFragment" />
-        <action
             android:id="@+id/action_talkFragment_to_tipFragment"
             app:destination="@id/tipFragment" />
         <action
             android:id="@+id/action_talkFragment_to_storeFragment"
             app:destination="@id/storeFragment" />
+        <action
+            android:id="@+id/action_talkFragment_to_boardDailyFragment"
+            app:destination="@id/boardDailyFragment" />
     </fragment>
     <fragment
         android:id="@+id/tipFragment"
@@ -89,10 +71,27 @@
             android:id="@+id/action_tipFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_tipFragment_to_bookmarkFragment"
-            app:destination="@id/bookmarkFragment" />
-        <action
             android:id="@+id/action_tipFragment_to_storeFragment"
             app:destination="@id/storeFragment" />
+        <action
+            android:id="@+id/action_tipFragment_to_boardDailyFragment"
+            app:destination="@id/boardDailyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/boardDailyFragment"
+        android:name="com.dongyang.mysolelife.fragments.BoardDailyFragment"
+        android:label="BoardDailyFragment" >
+        <action
+            android:id="@+id/action_boardDailyFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_boardDailyFragment_to_talkFragment"
+            app:destination="@id/talkFragment" />
+        <action
+            android:id="@+id/action_boardDailyFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+        <action
+            android:id="@+id/action_boardDailyFragment_to_tipFragment"
+            app:destination="@id/tipFragment" />
     </fragment>
 </navigation>

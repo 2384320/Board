@@ -54,7 +54,7 @@ class TipFragment : Fragment() {
         }
 
         binding.bookmarkTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_tipFragment_to_bookmarkFragment)
+            it.findNavController().navigate(R.id.action_tipFragment_to_boardDailyFragment)
         }
 
         binding.storeTap.setOnClickListener {
