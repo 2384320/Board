@@ -8,13 +8,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.dongyang.mysolelife.R
-import com.dongyang.mysolelife.databinding.FragmentStoreBinding
-import com.dongyang.mysolelife.databinding.FragmentTalkBinding
+import com.dongyang.mysolelife.databinding.FragmentMypageBinding
 
 
-class StoreFragment : Fragment() {
+class MyPageFragment : Fragment() {
 
-    private lateinit var binding : FragmentStoreBinding
+    private lateinit var binding : FragmentMypageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,22 +25,18 @@ class StoreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_store, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_mypage, container, false)
 
         binding.homeTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_storeFragment_to_homeFragment)
+            it.findNavController().navigate(R.id.action_myPageFragment_to_homeFragment)
         }
 
-        binding.tipTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_storeFragment_to_tipFragment)
-        }
-
-        binding.bookmarkTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_storeFragment_to_boardDailyFragment)
+        binding.boardDailyTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_myPageFragment_to_boardDailyFragment)
         }
 
         binding.talkTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_storeFragment_to_talkFragment)
+            it.findNavController().navigate(R.id.action_myPageFragment_to_talkFragment)
         }
         return binding.root
     }

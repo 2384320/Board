@@ -54,7 +54,7 @@ class BoardDailyWriteActivity : AppCompatActivity() {
 
             var denied = permission.count { ContextCompat.checkSelfPermission(this, it.value)  == PackageManager.PERMISSION_DENIED }
 
-            if(denied > 0 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (denied > 0 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 requestPermissions(permission.values.toTypedArray(), REQUEST_PERMISSIONS)
             }
 

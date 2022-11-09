@@ -47,12 +47,8 @@ class BoardDailyFragment : Fragment() {
             it.findNavController().navigate(R.id.action_boardDailyFragment_to_homeFragment)
         }
 
-        binding.tipTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_boardDailyFragment_to_tipFragment)
-        }
-
-        binding.storeTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_boardDailyFragment_to_storeFragment)
+        binding.myPageTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_boardDailyFragment_to_myPageFragment)
         }
 
         binding.talkTap.setOnClickListener {

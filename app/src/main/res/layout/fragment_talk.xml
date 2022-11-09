@@ -38,10 +38,10 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="1" />-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -66,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@color/white"
-                android:weightSum="5"
+                android:weightSum="4"
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <ImageView
@@ -74,14 +74,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_hometap" />
-
-                <ImageView
-                    android:id="@+id/tipTap"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/bottom_goodtip" />
+                    android:src="@drawable/bottom_home" />
 
                 <ImageView
                     android:id="@+id/talkTap"
@@ -91,18 +84,18 @@
                     android:src="@drawable/bottom_talk" />
 
                 <ImageView
-                    android:id="@+id/bookmarkTap"
+                    android:id="@+id/boardDailyTap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_bookmark" />
+                    android:src="@drawable/bottom_boarddaily" />
 
                 <ImageView
-                    android:id="@+id/storeTap"
+                    android:id="@+id/myPageTap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/bottom_store" />
+                    android:src="@drawable/bottom_mypage" />
 
             </LinearLayout>
 

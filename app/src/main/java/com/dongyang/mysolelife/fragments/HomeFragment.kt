@@ -30,21 +30,16 @@ class HomeFragment : Fragment() {
         Log.d("HomeFragment","onCreateView")
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
-        binding.tipTap.setOnClickListener {
-            Log.d("HomeFragment","tipTap")
-            it.findNavController().navigate(R.id.action_homeFragment_to_tipFragment)
-        }
-
         binding.talkTap.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_talkFragment)
         }
 
-        binding.bookmarkTap.setOnClickListener {
+        binding.boardDailyTap.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_boardDailyFragment)
         }
 
-        binding.storeTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_storeFragment)
+        binding.myPageTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_homeFragment_to_myPageFragment)
         }
 
         return binding.root

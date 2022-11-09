@@ -14,67 +14,10 @@
             android:id="@+id/action_homeFragment_to_talkFragment"
             app:destination="@id/talkFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_tipFragment"
-            app:destination="@id/tipFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_storeFragment"
-            app:destination="@id/storeFragment" />
+            android:id="@+id/action_homeFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment" />
         <action
             android:id="@+id/action_homeFragment_to_boardDailyFragment"
-            app:destination="@id/boardDailyFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/storeFragment"
-        android:name="com.dongyang.mysolelife.fragments.StoreFragment"
-        android:label="fragment_store"
-        tools:layout="@layout/fragment_store" >
-        <action
-            android:id="@+id/action_storeFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_storeFragment_to_tipFragment"
-            app:destination="@id/tipFragment" />
-        <action
-            android:id="@+id/action_storeFragment_to_talkFragment"
-            app:destination="@id/talkFragment" />
-        <action
-            android:id="@+id/action_storeFragment_to_boardDailyFragment"
-            app:destination="@id/boardDailyFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/talkFragment"
-        android:name="com.dongyang.mysolelife.fragments.TalkFragment"
-        android:label="fragment_talk"
-        tools:layout="@layout/fragment_talk" >
-        <action
-            android:id="@+id/action_talkFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_talkFragment_to_tipFragment"
-            app:destination="@id/tipFragment" />
-        <action
-            android:id="@+id/action_talkFragment_to_storeFragment"
-            app:destination="@id/storeFragment" />
-        <action
-            android:id="@+id/action_talkFragment_to_boardDailyFragment"
-            app:destination="@id/boardDailyFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/tipFragment"
-        android:name="com.dongyang.mysolelife.fragments.TipFragment"
-        android:label="fragment_tip"
-        tools:layout="@layout/fragment_tip" >
-        <action
-            android:id="@+id/action_tipFragment_to_talkFragment"
-            app:destination="@id/talkFragment" />
-        <action
-            android:id="@+id/action_tipFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_tipFragment_to_storeFragment"
-            app:destination="@id/storeFragment" />
-        <action
-            android:id="@+id/action_tipFragment_to_boardDailyFragment"
             app:destination="@id/boardDailyFragment" />
     </fragment>
     <fragment
@@ -82,16 +25,41 @@
         android:name="com.dongyang.mysolelife.fragments.BoardDailyFragment"
         android:label="BoardDailyFragment" >
         <action
-            android:id="@+id/action_boardDailyFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_boardDailyFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment" />
         <action
             android:id="@+id/action_boardDailyFragment_to_talkFragment"
             app:destination="@id/talkFragment" />
         <action
-            android:id="@+id/action_boardDailyFragment_to_storeFragment"
-            app:destination="@id/storeFragment" />
+            android:id="@+id/action_boardDailyFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/talkFragment"
+        android:name="com.dongyang.mysolelife.fragments.TalkFragment"
+        android:label="TalkFragment" >
         <action
-            android:id="@+id/action_boardDailyFragment_to_tipFragment"
-            app:destination="@id/tipFragment" />
+            android:id="@+id/action_talkFragment_to_myPageFragment"
+            app:destination="@id/myPageFragment" />
+        <action
+            android:id="@+id/action_talkFragment_to_boardDailyFragment"
+            app:destination="@id/boardDailyFragment" />
+        <action
+            android:id="@+id/action_talkFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myPageFragment"
+        android:name="com.dongyang.mysolelife.fragments.MyPageFragment"
+        android:label="MyPageFragment" >
+        <action
+            android:id="@+id/action_myPageFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_myPageFragment_to_boardDailyFragment"
+            app:destination="@id/boardDailyFragment" />
+        <action
+            android:id="@+id/action_myPageFragment_to_talkFragment"
+            app:destination="@id/talkFragment" />
     </fragment>
 </navigation>

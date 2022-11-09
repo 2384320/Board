@@ -45,16 +45,12 @@ class TalkFragment : Fragment() {
             it.findNavController().navigate(R.id.action_talkFragment_to_homeFragment)
         }
 
-        binding.tipTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_talkFragment_to_tipFragment)
-        }
-
-        binding.bookmarkTap.setOnClickListener {
+        binding.boardDailyTap.setOnClickListener {
             it.findNavController().navigate(R.id.action_talkFragment_to_boardDailyFragment)
         }
 
-        binding.storeTap.setOnClickListener {
-            it.findNavController().navigate(R.id.action_talkFragment_to_storeFragment)
+        binding.myPageTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_talkFragment_to_myPageFragment)
         }
         //////////////////////////////////////////////////////////////////////////////////////////
 
