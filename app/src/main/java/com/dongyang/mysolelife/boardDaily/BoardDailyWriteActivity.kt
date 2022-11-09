@@ -1,7 +1,9 @@
 package com.dongyang.mysolelife.boardDaily
 
+import android.Manifest
 import android.content.ContentValues
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.AsyncTask
 import android.os.Build
@@ -10,6 +12,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.amazonaws.auth.AWSCredentials
 import com.amazonaws.auth.BasicAWSCredentials
@@ -32,6 +35,7 @@ import java.io.IOException
 class BoardDailyWriteActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityBoardDailyWriteBinding
+    private val REQUEST_PERMISSIONS = 1
 
     private var isImageUpload : Boolean = false
     var imgUrl =""
@@ -43,6 +47,17 @@ class BoardDailyWriteActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_daily_write)
 
         binding.imgUploadBtn.setOnClickListener {
+            var permission = mutableMapOf<String, String>()
+            permission["camera"] = Manifest.permission.CAMERA
+            permission["storageRead"] = Manifest.permission.READ_EXTERNAL_STORAGE
+            permission["storageWrite"] =  Manifest.permission.WRITE_EXTERNAL_STORAGE
+
+            var denied = permission.count { ContextCompat.checkSelfPermission(this, it.value)  == PackageManager.PERMISSION_DENIED }
+
+            if(denied > 0 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(permission.values.toTypedArray(), REQUEST_PERMISSIONS)
+            }
+
             var gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery,100)
 
