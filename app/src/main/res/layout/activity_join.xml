@@ -31,9 +31,10 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/emailArea"
+                android:id="@+id/signUpName"
                 android:layout_width="match_parent"
-                android:hint="email"
+                android:hint="이름"
+                android:inputType="text"
                 android:layout_height="50dp"
                 style="@style/AuthEditText"
                 />
@@ -46,27 +47,26 @@
                 android:layout_height="0.5dp"/>
 
             <EditText
-                android:id="@+id/passwordArea1"
+                android:id="@+id/signUpUsername"
+                android:layout_width="match_parent"
+                android:hint="id"
+                android:inputType="text"
+                android:layout_height="50dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="#999999"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="0.5dp"/>
+
+            <EditText
+                android:id="@+id/signUpPassword"
                 android:layout_width="match_parent"
                 android:hint="password"
+                android:inputType="text"
                 android:layout_height="50dp"
-                android:inputType="textPassword"
-                style="@style/AuthEditText"
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:background="#999999"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="0.5dp"/>
-
-            <EditText
-                android:id="@+id/passwordArea2"
-                android:layout_width="match_parent"
-                android:hint="password check"
-                android:layout_height="50dp"
-                android:inputType="textPassword"
                 style="@style/AuthEditText"
                 />
 

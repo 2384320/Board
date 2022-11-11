@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -63,4 +64,12 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     //네트워크통신 (레트로핏 필요시 사용)
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    // SDK 초기화를 위한 모바일 클라이언트
+    implementation('com.amazonaws:aws-android-sdk-mobile-client:2.8.+@aar') { transitive = true }
+
+    // 로그인을 위한 Cognito UserPools
+    implementation('com.amazonaws:aws-android-sdk-auth-userpools:2.8.+@aar') { transitive = true }
+
+    // 로그인 UI 라이브러리
+    implementation('com.amazonaws:aws-android-sdk-auth-ui:2.8.+@aar') { transitive = true }
 }

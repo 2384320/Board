@@ -20,6 +20,9 @@
         <service android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
             android:enabled="true" />
         <activity
+            android:name=".auth.OkActivity"
+            android:exported="false" />
+        <activity
             android:name=".boardDaily.BoardDailyWriteActivity"
             android:exported="false">
             <meta-data
@@ -60,6 +63,7 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
         </activity>
         <activity
             android:name=".auth.IntroActivity"
