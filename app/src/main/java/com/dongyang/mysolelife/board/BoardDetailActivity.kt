@@ -15,10 +15,9 @@ class BoardDetailActivity : AppCompatActivity() {
 
         val boardData = intent.getSerializableExtra("info") as BoardModel
 
-        Log.d("태그", boardData.toString())
         val title : TextView = findViewById(R.id.title)
         val content : TextView = findViewById(R.id.content)
-        val time : TextView = findViewById(R.id.title)
+        val time : TextView = findViewById(R.id.time)
 
         title.text = boardData.title
         content.text = boardData.content
