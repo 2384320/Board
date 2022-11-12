@@ -80,10 +80,11 @@ class BoardDailyFragment : Fragment() {
                 // 임의 값  받아온거 파씽해주면 가능
                 val title="1"
                 val content="1"
+                val category="1"
                 val time="1"
                 val uid="a"
 
-                datas.add(BoardDailyModel(title,content,uid,time,img_url))
+                datas.add(BoardDailyModel(title,content,category,uid,time,img_url))
 
                 i++
             }

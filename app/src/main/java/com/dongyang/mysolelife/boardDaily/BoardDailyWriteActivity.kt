@@ -33,6 +33,8 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class BoardDailyWriteActivity : AppCompatActivity() {
 
@@ -77,10 +79,11 @@ class BoardDailyWriteActivity : AppCompatActivity() {
 
             val title = binding.titleArea.text.toString()
             val content = binding.contentArea.text.toString()
+            val category = spin.getSelectedItem().toString();
 //            승연님 uid 받아 넣기, time은 람다에서 받아 넣고있긴하지만 여기서 넣을수 있으면 그래도 됨 // 지금은 임의값 입력
 //            val uid = FBAuth.getUid()
 //            var time = FBAuth.getTime()
-            val time = "1"
+            val time = getTime()
             val uid = "2"
 
             if(isImageUpload){
@@ -88,14 +91,16 @@ class BoardDailyWriteActivity : AppCompatActivity() {
             }
 
             val task:InsertData= InsertData()
-            task.execute("https://ldxhg1ute8.execute-api.us-east-2.amazonaws.com/default/BoardDailyWrite", title, content, time, uid)
+            task.execute("https://ldxhg1ute8.execute-api.us-east-2.amazonaws.com/default/BoardDailyWrite", title, content,category, time, uid)
 
-            Log.d(TAG,"input Title: $title, Content: $content")
+            Log.d(TAG,"input Title: $title, Content: $content, Category: $category" )
             Toast.makeText(this,"게시글 작성 완료", Toast.LENGTH_LONG).show()
 
             finish()
         }
     }
+
+
 
     internal inner class InsertData: AsyncTask<String?, Void?, String>(){
 
@@ -104,14 +109,16 @@ class BoardDailyWriteActivity : AppCompatActivity() {
             val serverURL = params[0]
             val title = params[1]
             val content = params[2]
-            val time = params[3]
-            val uid = params[4]
+            val category = params[3]
+            val time = params[4]
+            val uid = params[5]
             val jsonObject = JSONObject()
 
-            Log.d(TAG, "POST response - back - $title $content $time $uid $imgUrl")
+            Log.d(TAG, "POST response - back - $title $content $category $time $uid $imgUrl")
             try {
                 jsonObject.put("title", title)
                 jsonObject.put("content", content)
+                jsonObject.put("category", category)
                 jsonObject.put("time", time)
                 jsonObject.put("uid", uid)
                 jsonObject.put("img_url", imgUrl)
@@ -198,6 +205,12 @@ class BoardDailyWriteActivity : AppCompatActivity() {
 
     }
 
+    fun getTime(): String {
+        val currentDateTime = Calendar.getInstance().time
+        val dateFormat = SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREA).format(currentDateTime)
+
+        return dateFormat
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
