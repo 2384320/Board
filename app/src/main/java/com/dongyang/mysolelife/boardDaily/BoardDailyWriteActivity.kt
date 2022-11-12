@@ -11,7 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.amazonaws.auth.AWSCredentials
@@ -45,6 +47,13 @@ class BoardDailyWriteActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_daily_write)
+
+        val view = binding.root
+        setContentView(view)
+
+        val spin = binding.spinner
+        spin.adapter = ArrayAdapter.createFromResource(this, R.array.types, android.R.layout.simple_spinner_item)
+
 
         binding.imgUploadBtn.setOnClickListener {
             var permission = mutableMapOf<String, String>()
