@@ -18,11 +18,11 @@
                 android:layout_height="500dp"/>
 
             <ImageView
-                android:src="@drawable/upperbg"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
                 android:layout_alignParentBottom="true"
                 android:scaleType="fitXY"
-                android:layout_width="match_parent"
-                android:layout_height="360dp"/>
+                android:src="@drawable/upperbg" />
 
             <LinearLayout
                 android:orientation="vertical"
