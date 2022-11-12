@@ -85,16 +85,20 @@ class TalkFragment : Fragment() {
             var i = 0
             while( i < items.length()){
                 val jsonObject = items.getJSONObject(i)
+
                 val titleType = jsonObject.getString("title")
                 val title = JSONObject(titleType).getString("S")
+
                 val contentType = jsonObject.getString("content")
                 val content = JSONObject(contentType).getString("S")
+
                 val timeType = jsonObject.getString("time")
                 val time = JSONObject(timeType).getString("S")
+
                 val uidType = jsonObject.getString("uid")
                 val uid = JSONObject(uidType).getString("S")
 
-                datas.add(BoardModel(title,content,time,uid))
+                datas.add(BoardModel(title, content, time, uid))
                 // uid는 고정적으로 2로 들어가는데 BoardWriteActivity에서 확인 가능함.
 
                 i++

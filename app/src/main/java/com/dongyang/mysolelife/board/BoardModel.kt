@@ -6,7 +6,5 @@ data class BoardModel (
     val title : String?,
     val content : String?,
     val time : String?,
-    val uid : String?,
-
-
-    ) : Serializable
+    val uid : String?
+) : Serializable

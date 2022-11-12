@@ -10,7 +10,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.dongyang.mysolelife.R
+import com.dongyang.mysolelife.board.BoardDetailActivity
 import com.dongyang.mysolelife.boardDaily.BoardDailyAdapter
+import com.dongyang.mysolelife.boardDaily.BoardDailyDetailActivity
 import com.dongyang.mysolelife.boardDaily.BoardDailyModel
 import com.dongyang.mysolelife.boardDaily.BoardDailyWriteActivity
 import com.dongyang.mysolelife.databinding.FragmentBoarddailyBinding
@@ -24,6 +26,7 @@ import java.io.IOException
 class BoardDailyFragment : Fragment() {
 
     private lateinit var binding : FragmentBoarddailyBinding
+    val datas = mutableListOf<BoardDailyModel>()
 
     private val TAG = BoardDailyFragment::class.java.simpleName
 
@@ -58,6 +61,12 @@ class BoardDailyFragment : Fragment() {
         val task: GetData = GetData()
         task.execute("https://pekvc7dpz3.execute-api.us-east-2.amazonaws.com/default/BoardDailyGetData")
 
+        binding.boardGridView.setOnItemClickListener { adapterView, view, i, l ->
+            val clickedItem = datas[i]
+            val myIntent = Intent(context, BoardDailyDetailActivity::class.java)
+            myIntent.putExtra("daily info", clickedItem)
+            startActivity(myIntent)
+        }
 
         return binding.root
     }
@@ -68,23 +77,32 @@ class BoardDailyFragment : Fragment() {
             super.onPostExecute(result)
 
             //리스트 새로고침
-            val datas = mutableListOf<BoardDailyModel>()
             val data = JSONObject(result).getString("body")
             val items = JSONObject(data).getJSONArray("Items")
             var i = 0
             while( i < items.length()){
                 val jsonObject = items.getJSONObject(i)
+
+                val titleType = jsonObject.getString("title")
+                val title = JSONObject(titleType).getString("S")
+
+                val contentType = jsonObject.getString("content")
+                val content = JSONObject(contentType).getString("S")
+
+                val categoryType = jsonObject.getString("category")
+                val category = JSONObject(categoryType).getString("S")
+
+                val timeType = jsonObject.getString("time")
+                val time = JSONObject(timeType).getString("S")
+
+                val uidType = jsonObject.getString("uid")
+                val uid = JSONObject(uidType).getString("S")
+
                 val img_urlType = jsonObject.getString("img_url")
                 val img_url = JSONObject(img_urlType).getString("S")
 
-                // 임의 값  받아온거 파씽해주면 가능
-                val title="1"
-                val content="1"
-                val category="1"
-                val time="1"
-                val uid="a"
-
-                datas.add(BoardDailyModel(title,content,category,uid,time,img_url))
+                datas.add(BoardDailyModel(title, content, category, time, uid, img_url))
+                // uid는 고정적으로 2로 들어가는데 BoardDailyWriteActivity에서 확인 가능함.
 
                 i++
             }

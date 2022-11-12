@@ -43,8 +43,6 @@ class BoardWriteActivity : AppCompatActivity() {
             val title = binding.titleArea.text.toString()
             val content = binding.contentArea.text.toString()
 //            승연님 uid 받아 넣기, time은 람다에서 받아 넣고있긴하지만 여기서 넣을수 있으면 그래도 됨 // 지금은 임의값 입력
-//            val uid = FBAuth.getUid()
-//            var time = FBAuth.getTime()
             val time = getTime()
             val uid = "2"
 

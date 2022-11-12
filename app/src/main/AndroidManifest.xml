@@ -18,6 +18,9 @@
         android:theme="@style/Theme.MySoleLife"
         tools:targetApi="31">
         <activity
+            android:name=".boardDaily.BoardDailyDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".board.BoardDetailActivity"
             android:exported="false" />
 

@@ -81,8 +81,6 @@ class BoardDailyWriteActivity : AppCompatActivity() {
             val content = binding.contentArea.text.toString()
             val category = spin.getSelectedItem().toString();
 //            승연님 uid 받아 넣기, time은 람다에서 받아 넣고있긴하지만 여기서 넣을수 있으면 그래도 됨 // 지금은 임의값 입력
-//            val uid = FBAuth.getUid()
-//            var time = FBAuth.getTime()
             val time = getTime()
             val uid = "2"
 
@@ -91,7 +89,7 @@ class BoardDailyWriteActivity : AppCompatActivity() {
             }
 
             val task:InsertData= InsertData()
-            task.execute("https://ldxhg1ute8.execute-api.us-east-2.amazonaws.com/default/BoardDailyWrite", title, content,category, time, uid)
+            task.execute("https://ldxhg1ute8.execute-api.us-east-2.amazonaws.com/default/BoardDailyWrite", title, content, category, time, uid)
 
             Log.d(TAG,"input Title: $title, Content: $content, Category: $category" )
             Toast.makeText(this,"게시글 작성 완료", Toast.LENGTH_LONG).show()
