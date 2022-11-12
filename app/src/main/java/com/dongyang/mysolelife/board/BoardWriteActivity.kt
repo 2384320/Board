@@ -19,6 +19,8 @@ import okhttp3.Response
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class BoardWriteActivity : AppCompatActivity() {
 
@@ -36,9 +38,6 @@ class BoardWriteActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val spin = binding.spinner
-        spin.adapter = ArrayAdapter.createFromResource(this, R.array.types, android.R.layout.simple_spinner_item)
-
         binding.writeBtn.setOnClickListener {
 
             val title = binding.titleArea.text.toString()
@@ -46,7 +45,7 @@ class BoardWriteActivity : AppCompatActivity() {
 //            승연님 uid 받아 넣기, time은 람다에서 받아 넣고있긴하지만 여기서 넣을수 있으면 그래도 됨 // 지금은 임의값 입력
 //            val uid = FBAuth.getUid()
 //            var time = FBAuth.getTime()
-            val time = "1"
+            val time = getTime()
             val uid = "2"
 
             val task:InsertData= InsertData()
@@ -94,5 +93,11 @@ class BoardWriteActivity : AppCompatActivity() {
                 e.toString()
             }
         }
+    }
+    fun getTime(): String {
+        val currentDateTime = Calendar.getInstance().time
+        val dateFormat = SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREA).format(currentDateTime)
+
+        return dateFormat
     }
 }
