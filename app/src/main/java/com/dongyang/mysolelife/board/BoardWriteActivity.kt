@@ -4,7 +4,10 @@ import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
 import com.dongyang.mysolelife.R
 import com.dongyang.mysolelife.databinding.ActivityBoardWriteBinding
@@ -23,10 +26,18 @@ class BoardWriteActivity : AppCompatActivity() {
 
     private val TAG = BoardWriteActivity::class.java.simpleName
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_write)
+
+        val view = binding.root
+        setContentView(view)
+
+        val spin = binding.spinner
+        spin.adapter = ArrayAdapter.createFromResource(this, R.array.types, android.R.layout.simple_spinner_item)
 
         binding.writeBtn.setOnClickListener {
 

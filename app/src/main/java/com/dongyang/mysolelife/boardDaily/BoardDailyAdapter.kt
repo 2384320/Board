@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dongyang.mysolelife.R
+import com.dongyang.mysolelife.contentsList.ContentRVAdapter
 
 class BoardDailyAdapter(private val items: MutableList<BoardDailyModel>): BaseAdapter() {
     override fun getCount(): Int = items.size
@@ -19,7 +21,7 @@ class BoardDailyAdapter(private val items: MutableList<BoardDailyModel>): BaseAd
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
-        Log.d("","getData - adabter in")
+        Log.d("","getData - adapter in")
 
         var view = convertView
         if (view == null) {
@@ -27,9 +29,10 @@ class BoardDailyAdapter(private val items: MutableList<BoardDailyModel>): BaseAd
         }
 
         val item: BoardDailyModel = items[position]
-        Log.d("","getData - adabter in img_url: ${item.img_url}")
+        Log.d("","getData - adapter in img_url: ${item.img_url}")
 
         val img_url = view?.findViewById<ImageView>(R.id.img_urlArea)
+
 
         if (view != null) {
             if (img_url != null) {
@@ -40,4 +43,5 @@ class BoardDailyAdapter(private val items: MutableList<BoardDailyModel>): BaseAd
         return view!!
 
     }
+
 }

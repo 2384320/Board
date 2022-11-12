@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -17,16 +18,27 @@ import com.amazonaws.mobile.client.Callback
 import com.amazonaws.mobile.client.results.SignUpResult
 import com.dongyang.mysolelife.MainActivity
 import com.dongyang.mysolelife.R
+import com.dongyang.mysolelife.databinding.ActivityBoardDailyWriteBinding
 import com.dongyang.mysolelife.databinding.ActivityJoinBinding
 import kotlinx.android.synthetic.main.activity_join.*
 import java.util.HashMap
 
 class JoinActivity : AppCompatActivity() {
 
+    private lateinit var binding : ActivityJoinBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_join)
+//        setContentView(R.layout.activity_join)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_join)
+
+        val view = binding.root
+        setContentView(view)
+
+        val spin = binding.spinner
+        spin.adapter = ArrayAdapter.createFromResource(this, R.array.ages, android.R.layout.simple_spinner_item)
+
         val signUp_button2 = findViewById<Button>(R.id.joinBtn) // 회원 가입 버튼
         signUp_button2.setOnClickListener {
             // 이름, 아이디(이메일), 비밀번호 순
