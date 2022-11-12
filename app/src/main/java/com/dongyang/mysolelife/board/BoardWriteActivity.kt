@@ -33,6 +33,12 @@ class BoardWriteActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_board_write)
 
+        val view = binding.root
+        setContentView(view)
+
+        val spin = binding.spinner
+        spin.adapter = ArrayAdapter.createFromResource(this, R.array.types, android.R.layout.simple_spinner_item)
+
         binding.writeBtn.setOnClickListener {
 
             val title = binding.titleArea.text.toString()

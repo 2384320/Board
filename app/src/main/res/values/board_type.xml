@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="types">
-        <item>게시판선택</item>
-        <item>자유글</item>
-        <item>코디글</item>
+        <item>스타일선택</item>
+        <item>심플베이직</item>
+        <item>페미닌</item>
+        <item>러블리</item>
+        <item>캐주얼</item>
+        <item>시크</item>
+        <item>유니크</item>
+        <item>캠퍼스룩</item>
+        <item>오피스룩</item>
+        <item>커플룩</item>
+        <item>로맨틱</item>
+        <item>빈티지</item>
+        <item>스트릿</item>
+        <item>모던 미니멀</item>
     </string-array>
 </resources>
