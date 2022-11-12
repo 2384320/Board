@@ -1,18 +1,22 @@
 package com.dongyang.mysolelife.fragments
 
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.dongyang.mysolelife.R
 import com.dongyang.mysolelife.board.BoardAdapter
+import com.dongyang.mysolelife.board.BoardDetailActivity
 import com.dongyang.mysolelife.board.BoardModel
+import com.dongyang.mysolelife.boardDaily.BoardDailyAdapter
+import com.dongyang.mysolelife.boardDaily.BoardDailyDetailActivity
+import com.dongyang.mysolelife.boardDaily.BoardDailyModel
 import com.dongyang.mysolelife.databinding.FragmentHomeBinding
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -24,7 +28,10 @@ import java.io.IOException
 class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
-
+    var boardData = mutableListOf<BoardModel>()
+    var boardDailyData = mutableListOf<BoardDailyModel>()
+    var i : Int = 0
+    var a : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,7 +42,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        Log.d("HomeFragment","onCreateView")
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
         binding.talkTap.setOnClickListener {
@@ -50,42 +56,128 @@ class HomeFragment : Fragment() {
             it.findNavController().navigate(R.id.action_homeFragment_to_myPageFragment)
         }
 
+        var task1 = GetData1()
+        task1.execute("https://ah25ys9ec9.execute-api.us-east-2.amazonaws.com/default/BoardCommunityGetData")
 
-        val task: GetData = GetData()
-        task.execute("https://ah25ys9ec9.execute-api.us-east-2.amazonaws.com/default/BoardCommunityGetData")
+        binding.homeBoardListView.setOnItemClickListener { adapterView, view, i, l ->
+            val clickedItem = boardData[i]
+            val myIntent = Intent(context, BoardDetailActivity::class.java)
+            myIntent.putExtra("info", clickedItem)
+            startActivity(myIntent)
+        }
+
+        val task2 = GetData2()
+        task2.execute("https://pekvc7dpz3.execute-api.us-east-2.amazonaws.com/default/BoardDailyGetData")
+
+        binding.homeBoardGridView.setOnItemClickListener { adapterView, view, i, l ->
+            val clickedItem = boardDailyData[i]
+            val myIntent = Intent(context, BoardDailyDetailActivity::class.java)
+            myIntent.putExtra("daily info", clickedItem)
+            startActivity(myIntent)
+        }
 
         return binding.root
     }
-    internal inner class GetData: AsyncTask<String?, Void?, String>(){
+    internal inner class GetData1: AsyncTask<String?, Void?, String>(){
+
+        override fun onPostExecute(result: String?) {
+            super.onPostExecute(result)
+
+            var data = JSONObject(result).getString("body")
+            var items = JSONObject(data).getJSONArray("Items")
+            i = 0
+
+                while(i < 4){
+                    val jsonObject = items.getJSONObject(i)
+
+                    val titleType = jsonObject.getString("title")
+                    val title = JSONObject(titleType).getString("S")
+
+                    val contentType = jsonObject.getString("content")
+                    val content = JSONObject(contentType).getString("S")
+
+                    val timeType = jsonObject.getString("time")
+                    val time = JSONObject(timeType).getString("S")
+
+                    val uidType = jsonObject.getString("uid")
+                    val uid = JSONObject(uidType).getString("S")
+
+                    boardData.add(BoardModel(title, content, time, uid))
+                    i++
+                }
+                val boardAdapter = BoardAdapter(boardData)
+                binding.homeBoardListView.adapter = boardAdapter
+
+                var totalHeight = 0
+                for (i in 0 until boardAdapter.getCount()) {
+                    val listItem: View = boardAdapter.getView(i, null, binding.homeBoardListView)
+                    listItem.measure(0, 0)
+                    totalHeight += listItem.measuredHeight
+                }
+                val params: ViewGroup.LayoutParams = binding.homeBoardListView.getLayoutParams()
+                params.height =
+                    totalHeight + binding.homeBoardListView.getDividerHeight() * (boardAdapter.getCount() - 1)
+                binding.homeBoardListView.setLayoutParams(params)
+        }
+
+        protected override fun doInBackground(vararg params: String?): String
+        {
+            val serverURL = params[0]
+            val client = OkHttpClient()
+            val request = Request.Builder().url(serverURL.toString()).get().build()
+            var response: Response? = null
+            return try {
+                response = client.newCall(request).execute()
+
+                response.body!!.string()
+
+            } catch (e: IOException) {
+                e.printStackTrace()
+                e.toString()
+            }
+        }
+    }
+
+    internal inner class GetData2: AsyncTask<String?, Void?, String>(){
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
 
             //리스트 새로고침
-            val datas = mutableListOf<BoardModel>()
             val data = JSONObject(result).getString("body")
             val items = JSONObject(data).getJSONArray("Items")
-
             var i = 0
-            while( i < 3){
+            while(i < 10){
                 val jsonObject = items.getJSONObject(i)
+
                 val titleType = jsonObject.getString("title")
                 val title = JSONObject(titleType).getString("S")
+
                 val contentType = jsonObject.getString("content")
                 val content = JSONObject(contentType).getString("S")
 
-               when(i){
-                   0 -> binding.board1.setText(title)
-                   1 -> binding.board2.setText(title)
-                   2 -> binding.board3.setText(title)
-               }
+                val categoryType = jsonObject.getString("category")
+                val category = JSONObject(categoryType).getString("S")
 
+                val timeType = jsonObject.getString("time")
+                val time = JSONObject(timeType).getString("S")
+
+                val uidType = jsonObject.getString("uid")
+                val uid = JSONObject(uidType).getString("S")
+
+                val img_urlType = jsonObject.getString("img_url")
+                val img_url = JSONObject(img_urlType).getString("S")
+
+                boardDailyData.add(BoardDailyModel(title, content, category, time, uid, img_url))
+                // uid는 고정적으로 2로 들어가는데 BoardDailyWriteActivity에서 확인 가능함.
 
                 i++
             }
-
+            val boardDailyAdapter = BoardDailyAdapter(boardDailyData)
+            binding.homeBoardGridView.adapter = boardDailyAdapter
 
         }
+
 
         protected override fun doInBackground(vararg params: String?): String
         {

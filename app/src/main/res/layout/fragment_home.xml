@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -9,184 +9,98 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                    <ImageView
-                        android:id="@+id/category1"
-                        android:src="@drawable/main_icon_all"
-                        android:layout_weight="1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"/>
-
-                    <ImageView
-                        android:id="@+id/category2"
-                        android:src="@drawable/main_icon_cook"
-                        android:layout_weight="1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"/>
-
-                    <ImageView
-                        android:src="@drawable/main_icon_economy"
-                        android:layout_weight="1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"/>
-
-                    <ImageView
-                        android:src="@drawable/main_icon_else"
-                        android:layout_weight="1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:text="category"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:text="category"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:text="category"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:text="category"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_weight="1"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp">
-
-                    <ImageView
-                        android:src="@drawable/main_icon_hobby"
-                        android:layout_weight="1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"/>
-
-                    <ImageView
-
-                        android:src="@drawable/main_icon_interior"
-                        android:layout_weight="1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"/>
-
-                    <ImageView
-                        android:src="@drawable/main_icon_life"
-                        android:layout_weight="1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"/>
-
-                    <ImageView
-                        android:src="@drawable/main_icon_oneroom"
-                        android:layout_weight="1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:text="category"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:text="category"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:text="category"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:text="category"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_weight="1"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/homeConstraint2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:background="@drawable/background_radius"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/board1"
-                        android:layout_width="wrap_content"
-                        android:layout_margin="10dp"
-                        android:layout_height="wrap_content"/>
+                        android:id="@+id/hometalktext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:gravity="center"
+                        android:text="자유톡"
+                        android:textColor="@color/black"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/board2"
-                        android:layout_margin="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:id="@+id/textview2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="다른 회원님과 자유롭게 코디에 대해 얘기해보세요\n코디에 대한 좋은 힌트를 얻을 수 있으면 좋겠네요"
+                        app:layout_constraintTop_toBottomOf="@+id/hometalktext" />
 
-                    <TextView
-                        android:id="@+id/board3"
-                        android:layout_margin="10dp"
+                    <ListView
+                        android:id="@+id/homeBoardListView"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/mainRV"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/homeConstraint1"
                     android:layout_width="match_parent"
-                    android:layout_height="600dp"/>
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/background_radius"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <TextView
+                        android:id="@+id/homedailytext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:gravity="center"
+                        android:text="당신을 위한 코디"
+                        android:textColor="@color/black"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="회원님의 활동을 지켜본 저희가 코디를 추천해드려요\n이런 코디는 어떠신가요?"
+                        app:layout_constraintTop_toBottomOf="@+id/homedailytext"
+                        tools:ignore="MissingConstraints" />
+
+                    <GridView
+                        android:id="@+id/homeBoardGridView"
+                        android:layout_width="match_parent"
+                        android:layout_height="930dp"
+                        android:layout_marginBottom="5dp"
+                        android:numColumns="auto_fit"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toBottomOf="@+id/textView"
+                        tools:ignore="NestedScrolling">
+
+                    </GridView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </LinearLayout>
-
         </ScrollView>
-
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -194,25 +108,25 @@
             app:layout_constraintBottom_toTopOf="@+id/linearLayout">
 
             <LinearLayout
-                android:background="@color/mainColor"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_height="match_parent"/>
+                android:background="@color/mainColor" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
@@ -253,9 +167,6 @@
                 android:src="@drawable/bottom_mypage" />
 
         </LinearLayout>
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
