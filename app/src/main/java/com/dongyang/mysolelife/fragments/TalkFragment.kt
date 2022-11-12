@@ -1,16 +1,21 @@
 package com.dongyang.mysolelife.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.dongyang.mysolelife.R
 import com.dongyang.mysolelife.board.BoardAdapter
+import com.dongyang.mysolelife.board.BoardDetailActivity
 import com.dongyang.mysolelife.board.BoardModel
 import com.dongyang.mysolelife.board.BoardWriteActivity
 import com.dongyang.mysolelife.databinding.FragmentTalkBinding
@@ -20,10 +25,11 @@ import okhttp3.Response
 import org.json.JSONObject
 import java.io.IOException
 
+
 class TalkFragment : Fragment() {
 
     private lateinit var binding : FragmentTalkBinding
-
+    val datas = mutableListOf<BoardModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -56,6 +62,12 @@ class TalkFragment : Fragment() {
         val task:GetData = GetData()
         task.execute("https://ah25ys9ec9.execute-api.us-east-2.amazonaws.com/default/BoardCommunityGetData")
 
+        binding.boardListView.setOnItemClickListener { adapterView, view, i, l ->
+            val clickedItem = datas[i]
+            val myIntent = Intent(context, BoardDetailActivity::class.java)
+            myIntent.putExtra("info", clickedItem)
+            startActivity(myIntent)
+        }
 
         return binding.root
     }
@@ -66,7 +78,7 @@ class TalkFragment : Fragment() {
             super.onPostExecute(result)
 
             //리스트 새로고침
-            val datas = mutableListOf<BoardModel>()
+
             val data = JSONObject(result).getString("body")
             val items = JSONObject(data).getJSONArray("Items")
 
