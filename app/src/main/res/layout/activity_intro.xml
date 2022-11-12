@@ -12,23 +12,24 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:src="@drawable/loginbg"
                 android:layout_width="match_parent"
+                android:layout_height="630dp"
                 android:scaleType="fitXY"
-                android:layout_height="500dp"/>
+                android:src="@drawable/loginbg2" />
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="360dp"
+                android:layout_height="440dp"
                 android:layout_alignParentBottom="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/upperbg" />
+                android:src="@drawable/upperbg2" />
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_alignParentBottom="true"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="10dp"
                 android:layout_height="wrap_content">
 
                 <Button
