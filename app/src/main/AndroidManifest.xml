@@ -23,6 +23,9 @@
         <activity
             android:name=".board.BoardDetailActivity"
             android:exported="false" />
+        <activity
+            android:name=".personalize.PersonalizeDetailActivity"
+            android:exported="false" />
 
         <service
             android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"

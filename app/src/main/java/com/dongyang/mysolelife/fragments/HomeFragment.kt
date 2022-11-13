@@ -3,7 +3,6 @@ package com.dongyang.mysolelife.fragments
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +17,9 @@ import com.dongyang.mysolelife.boardDaily.BoardDailyAdapter
 import com.dongyang.mysolelife.boardDaily.BoardDailyDetailActivity
 import com.dongyang.mysolelife.boardDaily.BoardDailyModel
 import com.dongyang.mysolelife.databinding.FragmentHomeBinding
+import com.dongyang.mysolelife.personalize.PersonalizeAdapter
+import com.dongyang.mysolelife.personalize.PersonalizeDetailActivity
+import com.dongyang.mysolelife.personalize.PersonalizeModel
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -29,7 +31,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
     var boardData = mutableListOf<BoardModel>()
-    var boardDailyData = mutableListOf<BoardDailyModel>()
+    var personalizeData = mutableListOf<PersonalizeModel>()
     var i : Int = 0
     var a : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,12 +69,12 @@ class HomeFragment : Fragment() {
         }
 
         val task2 = GetData2()
-        task2.execute("https://pekvc7dpz3.execute-api.us-east-2.amazonaws.com/default/BoardDailyGetData")
+        task2.execute("https://y44v76txl0.execute-api.us-east-2.amazonaws.com/default/BoardPersonalizeGetData")
 
         binding.homeBoardGridView.setOnItemClickListener { adapterView, view, i, l ->
-            val clickedItem = boardDailyData[i]
-            val myIntent = Intent(context, BoardDailyDetailActivity::class.java)
-            myIntent.putExtra("daily info", clickedItem)
+            val clickedItem = personalizeData[i]
+            val myIntent = Intent(context, PersonalizeDetailActivity::class.java)
+            myIntent.putExtra("personalize info", clickedItem)
             startActivity(myIntent)
         }
 
@@ -82,6 +84,7 @@ class HomeFragment : Fragment() {
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
+
 
             var data = JSONObject(result).getString("body")
             var items = JSONObject(data).getJSONArray("Items")
@@ -144,8 +147,7 @@ class HomeFragment : Fragment() {
             super.onPostExecute(result)
 
             //리스트 새로고침
-            val data = JSONObject(result).getString("body")
-            val items = JSONObject(data).getJSONArray("Items")
+            val items = JSONObject(result).getJSONArray("Items")
             var i = 0
             while(i < 10){
                 val jsonObject = items.getJSONObject(i)
@@ -159,8 +161,8 @@ class HomeFragment : Fragment() {
                 val categoryType = jsonObject.getString("category")
                 val category = JSONObject(categoryType).getString("S")
 
-                val timeType = jsonObject.getString("time")
-                val time = JSONObject(timeType).getString("S")
+                val upload_timeType = jsonObject.getString("upload_time")
+                val upload_time = JSONObject(upload_timeType).getString("S")
 
                 val uidType = jsonObject.getString("uid")
                 val uid = JSONObject(uidType).getString("S")
@@ -168,13 +170,13 @@ class HomeFragment : Fragment() {
                 val img_urlType = jsonObject.getString("img_url")
                 val img_url = JSONObject(img_urlType).getString("S")
 
-                boardDailyData.add(BoardDailyModel(title, content, category, time, uid, img_url))
+                personalizeData.add(PersonalizeModel(title, content, category, upload_time, uid, img_url))
                 // uid는 고정적으로 2로 들어가는데 BoardDailyWriteActivity에서 확인 가능함.
 
                 i++
             }
-            val boardDailyAdapter = BoardDailyAdapter(boardDailyData)
-            binding.homeBoardGridView.adapter = boardDailyAdapter
+            val personalizeAdapter = PersonalizeAdapter(personalizeData)
+            binding.homeBoardGridView.adapter = personalizeAdapter
 
         }
 
@@ -189,7 +191,6 @@ class HomeFragment : Fragment() {
             return try {
                 response = client.newCall(request).execute()
                 response.body!!.string()
-
             } catch (e: IOException) {
                 e.printStackTrace()
                 e.toString()

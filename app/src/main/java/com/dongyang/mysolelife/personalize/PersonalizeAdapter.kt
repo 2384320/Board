@@ -1,4 +1,4 @@
-package com.dongyang.mysolelife.boardDaily
+package com.dongyang.mysolelife.personalize
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,16 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dongyang.mysolelife.R
-import com.dongyang.mysolelife.contentsList.ContentRVAdapter
 
-class BoardDailyAdapter(private val items: MutableList<BoardDailyModel>): BaseAdapter() {
+class PersonalizeAdapter(private val items: MutableList<PersonalizeModel>): BaseAdapter() {
     override fun getCount(): Int = items.size
 
-    override fun getItem(position: Int): BoardDailyModel = items[position]
+    override fun getItem(position: Int): PersonalizeModel = items[position]
 
     override fun getItemId(position: Int): Long = position.toLong()
 
@@ -26,7 +23,7 @@ class BoardDailyAdapter(private val items: MutableList<BoardDailyModel>): BaseAd
             view = LayoutInflater.from(parent?.context).inflate(R.layout.activity_board_daily_listview, parent, false)
         }
 
-        val item: BoardDailyModel = items[position]
+        val item: PersonalizeModel = items[position]
 
         val img_url = view?.findViewById<ImageView>(R.id.img_urlArea)
 
@@ -40,5 +37,4 @@ class BoardDailyAdapter(private val items: MutableList<BoardDailyModel>): BaseAd
         return view!!
 
     }
-
 }
