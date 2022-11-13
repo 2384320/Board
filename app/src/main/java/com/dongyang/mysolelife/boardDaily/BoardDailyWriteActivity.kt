@@ -24,6 +24,7 @@ import com.amazonaws.regions.Regions
 import com.amazonaws.services.s3.AmazonS3Client
 import com.dongyang.mysolelife.R
 import com.dongyang.mysolelife.databinding.ActivityBoardDailyWriteBinding
+import com.dongyang.mysolelife.utils.getTime
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -201,13 +202,6 @@ class BoardDailyWriteActivity : AppCompatActivity() {
             }
         })
 
-    }
-
-    fun getTime(): String {
-        val currentDateTime = Calendar.getInstance().time
-        val dateFormat = SimpleDateFormat("yyyy.MM.dd HH:mm:ss", Locale.KOREA).format(currentDateTime)
-
-        return dateFormat
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

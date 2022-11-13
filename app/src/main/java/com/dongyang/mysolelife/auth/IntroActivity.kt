@@ -25,23 +25,23 @@ class IntroActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_intro)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_intro)
-        AWSMobileClient.getInstance()
-            .initialize(applicationContext, object : Callback<UserStateDetails> {
-                override fun onResult(userStateDetails: UserStateDetails) {
-                    Log.i(TAG, userStateDetails.userState.toString())
-
-                    // 로그인이 되어있으면 MainActivity 로 이동
-                    if (userStateDetails.userState == UserState.SIGNED_IN) {
-                        val i = Intent(this@IntroActivity, MainActivity::class.java)
-                        startActivity(i)
-                        finish()
-                    }
-                }
-
-                override fun onError(e: Exception) {
-                    Log.e(TAG, e.toString())
-                }
-            })
+//        AWSMobileClient.getInstance()
+//            .initialize(applicationContext, object : Callback<UserStateDetails> {
+//                override fun onResult(userStateDetails: UserStateDetails) {
+//                    Log.i(TAG, userStateDetails.userState.toString())
+//
+//                    // 로그인이 되어있으면 MainActivity 로 이동
+//                    if (userStateDetails.userState == UserState.SIGNED_IN) {
+//                        val i = Intent(this@IntroActivity, MainActivity::class.java)
+//                        startActivity(i)
+//                        finish()
+//                    }
+//                }
+//
+//                override fun onError(e: Exception) {
+//                    Log.e(TAG, e.toString())
+//                }
+//            })
         binding.loginBtn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)

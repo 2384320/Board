@@ -34,7 +34,12 @@ class TalkFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
     }
+    override fun onResume() {
+        super.onResume()
+        val task:GetData = GetData()
+        task.execute("https://ah25ys9ec9.execute-api.us-east-2.amazonaws.com/default/BoardCommunityGetData")
 
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

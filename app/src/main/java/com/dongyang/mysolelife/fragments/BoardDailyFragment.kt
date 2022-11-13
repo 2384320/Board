@@ -34,6 +34,11 @@ class BoardDailyFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
     }
+    override fun onResume() {
+        super.onResume()
+        val task: GetData = GetData()
+        task.execute("https://pekvc7dpz3.execute-api.us-east-2.amazonaws.com/default/BoardDailyGetData")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
