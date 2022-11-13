@@ -1,15 +1,11 @@
 package com.dongyang.mysolelife.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -29,13 +25,16 @@ import java.io.IOException
 class TalkFragment : Fragment() {
 
     private lateinit var binding : FragmentTalkBinding
-    val datas = mutableListOf<BoardModel>()
+    var datas = mutableListOf<BoardModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
     override fun onResume() {
         super.onResume()
+        binding.boardListView.adapter = null
+
         val task:GetData = GetData()
         task.execute("https://ah25ys9ec9.execute-api.us-east-2.amazonaws.com/default/BoardCommunityGetData")
 
@@ -64,9 +63,6 @@ class TalkFragment : Fragment() {
         }
         //////////////////////////////////////////////////////////////////////////////////////////
 
-        val task:GetData = GetData()
-        task.execute("https://ah25ys9ec9.execute-api.us-east-2.amazonaws.com/default/BoardCommunityGetData")
-
         binding.boardListView.setOnItemClickListener { adapterView, view, i, l ->
             val clickedItem = datas[i]
             val myIntent = Intent(context, BoardDetailActivity::class.java)
@@ -82,11 +78,11 @@ class TalkFragment : Fragment() {
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
 
+            datas = mutableListOf<BoardModel>()
             //리스트 새로고침
 
             val data = JSONObject(result).getString("body")
             val items = JSONObject(data).getJSONArray("Items")
-
             var i = 0
             while( i < items.length()){
                 val jsonObject = items.getJSONObject(i)

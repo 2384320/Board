@@ -26,7 +26,7 @@ import java.io.IOException
 class BoardDailyFragment : Fragment() {
 
     private lateinit var binding : FragmentBoarddailyBinding
-    val datas = mutableListOf<BoardDailyModel>()
+    var datas = mutableListOf<BoardDailyModel>()
 
     private val TAG = BoardDailyFragment::class.java.simpleName
 
@@ -36,6 +36,8 @@ class BoardDailyFragment : Fragment() {
     }
     override fun onResume() {
         super.onResume()
+        binding.boardGridView.adapter = null
+
         val task: GetData = GetData()
         task.execute("https://pekvc7dpz3.execute-api.us-east-2.amazonaws.com/default/BoardDailyGetData")
     }
@@ -81,6 +83,7 @@ class BoardDailyFragment : Fragment() {
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
 
+            datas = mutableListOf<BoardDailyModel>()
             //리스트 새로고침
             val data = JSONObject(result).getString("body")
             val items = JSONObject(data).getJSONArray("Items")
