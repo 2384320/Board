@@ -21,6 +21,7 @@ import com.dongyang.mysolelife.databinding.FragmentHomeBinding
 import com.dongyang.mysolelife.personalize.PersonalizeAdapter
 import com.dongyang.mysolelife.personalize.PersonalizeDetailActivity
 import com.dongyang.mysolelife.personalize.PersonalizeModel
+import kotlinx.android.synthetic.main.activity_personalize_detail.*
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -34,6 +35,9 @@ class HomeFragment : Fragment() {
     var boardData = mutableListOf<BoardModel>()
     var boardData2 = mutableListOf<BoardModel>()
     var personalizeData = mutableListOf<PersonalizeModel>()
+    var personalizeCategoryList = ArrayList<String>()
+    var personalizeCategoryResultList = listOf<String>()
+    var personalizeCategoryString : String = ""
     var i : Int = 0
     var a : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,7 +90,6 @@ class HomeFragment : Fragment() {
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
-
 
             var data = JSONObject(result).getString("body")
             var items = JSONObject(data).getJSONArray("Items")
@@ -166,6 +169,8 @@ class HomeFragment : Fragment() {
 
                 val categoryType = jsonObject.getString("category")
                 val category = JSONObject(categoryType).getString("S")
+                personalizeCategoryList.add(category)
+
 
                 val upload_timeType = jsonObject.getString("upload_time")
                 val upload_time = JSONObject(upload_timeType).getString("S")
@@ -184,6 +189,12 @@ class HomeFragment : Fragment() {
             val personalizeAdapter = PersonalizeAdapter(personalizeData)
             binding.homeBoardGridView.adapter = personalizeAdapter
 
+            personalizeCategoryResultList = personalizeCategoryList.distinct()
+            personalizeCategoryString = personalizeCategoryResultList.joinToString(
+                prefix = "#",
+                separator = ", #"
+            )
+            binding.textPersonalize.text = personalizeCategoryString
         }
 
 

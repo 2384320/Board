@@ -27,7 +27,6 @@ class PersonalizeAdapter(private val items: MutableList<PersonalizeModel>): Base
 
         val img_url = view?.findViewById<ImageView>(R.id.img_urlArea)
 
-
         if (view != null) {
             if (img_url != null) {
                 Glide.with(view).load(item.img_url).into(img_url)
