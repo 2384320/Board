@@ -20,7 +20,6 @@ import com.dongyang.mysolelife.MainActivity
 import com.dongyang.mysolelife.R
 import com.dongyang.mysolelife.databinding.ActivityBoardDailyWriteBinding
 import com.dongyang.mysolelife.databinding.ActivityJoinBinding
-import kotlinx.android.synthetic.main.activity_join.*
 import java.util.HashMap
 
 class JoinActivity : AppCompatActivity() {
