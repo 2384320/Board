@@ -37,6 +37,7 @@
 
 
             <LinearLayout
+                android:id="@+id/layout656465"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -69,12 +70,12 @@
 
                     <TextView
                         android:id="@+id/username"
-                        android:layout_width="65dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="180dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:gravity="center"
-                        android:text="홍길동"
+                        android:layout_marginRight="30dp"
+                        android:gravity="right"
+                        android:text="동양이"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -101,11 +102,11 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
                         android:layout_marginLeft="10dp"
-                        android:gravity="center"
-                        android:text="dongyang@dongyang.ac.kr"
+                        android:gravity="right"
+                        android:text="chdms2412@naver.com"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -145,7 +146,7 @@
                         android:id="@+id/Age"
                         android:layout_width="55dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="40dp"
+                        android:layout_marginStart="30dp"
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
                         android:text="나이"
@@ -153,30 +154,28 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent"
-
-                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_marginRight="30dp"
                         android:text="20대"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
+
                 </LinearLayout>
+                <Button
+                    android:layout_gravity="center"
+                    android:id="@+id/button5"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="130dp"
+                    android:layout_height="50dp"
+                    android:text="로그아웃"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
             </LinearLayout>
 
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="130dp"
-                android:layout_height="50dp"
-                android:text="로그아웃"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.72" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -94,7 +94,7 @@
                         android:textSize="25dp"
                         android:textStyle="bold"
                         android:text="&lt;관심 카테고리&gt;"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         app:layout_constraintTop_toBottomOf="@+id/textView"
                         tools:ignore="MissingConstraints" />
 

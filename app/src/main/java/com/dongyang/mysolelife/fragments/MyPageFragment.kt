@@ -7,16 +7,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.amazonaws.mobile.client.AWSMobileClient
-
 import com.dongyang.mysolelife.auth.IntroActivity
 import com.dongyang.mysolelife.databinding.FragmentMypageBinding
-
 
 
 class MyPageFragment : Fragment(), View.OnClickListener{
@@ -25,11 +21,6 @@ class MyPageFragment : Fragment(), View.OnClickListener{
     private lateinit var auth:AWSMobileClient
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // ID or 닉네임이 textView에 보이기 위한 함수
-        auth = AWSMobileClient.getInstance()
-        //유저 이름 전달 안됨 ㅜㅜ
-        // username.text = auth.username.toString()
 
     }
 
