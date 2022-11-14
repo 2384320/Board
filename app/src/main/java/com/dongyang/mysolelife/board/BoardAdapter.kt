@@ -26,10 +26,12 @@ class BoardAdapter(private val items: MutableList<BoardModel>): BaseAdapter() {
 
         val title = view?.findViewById<TextView>(R.id.listview_title)
         val content = view?.findViewById<TextView>(R.id.listview_content)
+        val time = view?.findViewById<TextView>(R.id.listview_time)
 
 
         title!!.text = item.title
         content!!.text = item.content
+        time!!.text = item.time
 
 
         return view!!

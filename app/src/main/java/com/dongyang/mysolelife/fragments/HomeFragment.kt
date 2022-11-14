@@ -3,6 +3,7 @@ package com.dongyang.mysolelife.fragments
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding : FragmentHomeBinding
     var boardData = mutableListOf<BoardModel>()
+    var boardData2 = mutableListOf<BoardModel>()
     var personalizeData = mutableListOf<PersonalizeModel>()
     var i : Int = 0
     var a : Int = 0
@@ -62,7 +64,7 @@ class HomeFragment : Fragment() {
         task1.execute("https://ah25ys9ec9.execute-api.us-east-2.amazonaws.com/default/BoardCommunityGetData")
 
         binding.homeBoardListView.setOnItemClickListener { adapterView, view, i, l ->
-            val clickedItem = boardData[i]
+            val clickedItem = boardData2[i]
             val myIntent = Intent(context, BoardDetailActivity::class.java)
             myIntent.putExtra("info", clickedItem)
             startActivity(myIntent)
@@ -95,9 +97,11 @@ class HomeFragment : Fragment() {
 
                     val titleType = jsonObject.getString("title")
                     val title = JSONObject(titleType).getString("S")
+                    val titleSlice = title.substring(0 until 10) + "..."
 
                     val contentType = jsonObject.getString("content")
                     val content = JSONObject(contentType).getString("S")
+                    val contentSlice = content.substring(0 until 10) + "..."
 
                     val timeType = jsonObject.getString("time")
                     val time = JSONObject(timeType).getString("S")
@@ -105,7 +109,9 @@ class HomeFragment : Fragment() {
                     val uidType = jsonObject.getString("uid")
                     val uid = JSONObject(uidType).getString("S")
 
-                    boardData.add(BoardModel(title, content, time, uid))
+                    //
+                    boardData.add(BoardModel(titleSlice, contentSlice, time, uid))
+                    boardData2.add(BoardModel(title, content, time, uid))
                     i++
                 }
                 val boardAdapter = BoardAdapter(boardData)

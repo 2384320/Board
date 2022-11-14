@@ -26,6 +26,7 @@ class TalkFragment : Fragment() {
 
     private lateinit var binding : FragmentTalkBinding
     var datas = mutableListOf<BoardModel>()
+    var datas2 = mutableListOf<BoardModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +65,7 @@ class TalkFragment : Fragment() {
         //////////////////////////////////////////////////////////////////////////////////////////
 
         binding.boardListView.setOnItemClickListener { adapterView, view, i, l ->
-            val clickedItem = datas[i]
+            val clickedItem = datas2[i]
             val myIntent = Intent(context, BoardDetailActivity::class.java)
             myIntent.putExtra("info", clickedItem)
             startActivity(myIntent)
@@ -89,9 +90,11 @@ class TalkFragment : Fragment() {
 
                 val titleType = jsonObject.getString("title")
                 val title = JSONObject(titleType).getString("S")
+                val titleSlice = title.substring(0 until 10) + "..."
 
                 val contentType = jsonObject.getString("content")
                 val content = JSONObject(contentType).getString("S")
+                val contentSlice = content.substring(0 until 10) + "..."
 
                 val timeType = jsonObject.getString("time")
                 val time = JSONObject(timeType).getString("S")
@@ -99,7 +102,8 @@ class TalkFragment : Fragment() {
                 val uidType = jsonObject.getString("uid")
                 val uid = JSONObject(uidType).getString("S")
 
-                datas.add(BoardModel(title, content, time, uid))
+                datas.add(BoardModel(titleSlice, contentSlice, time, uid))
+                datas2.add(BoardModel(title, content, time, uid))
                 // uid는 고정적으로 2로 들어가는데 BoardWriteActivity에서 확인 가능함.
 
                 i++
